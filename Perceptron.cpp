@@ -23,7 +23,7 @@ double Perceptron::forward(Input *input) {
 }
 
 double Perceptron::calcul_delta(Input *input) {
-    return 0;
+   
 }
 
 double Perceptron::get_delta() {
