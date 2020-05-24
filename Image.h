@@ -2,25 +2,18 @@
 #define IMAGE_H
 
 #include <iostream>
+#include "Input.h"
+
 using namespace std;
 
-class Image
+class Image: public Input
 {
-
 private:
-char * label;
-
-
+    char pixel[784];
 public:
-  // Constructeur
-Image(char * label);
-
-void set_label(char *  y);
-
-char * get_label ();
-
-double value_access(double *  arr,int pos);
-
+    Image(int index);
+    double operator[](int indice);
+    char get_label ();
 };
 
 #endif

@@ -5,26 +5,13 @@
 using namespace std;
 #include <string>   // pour std::string
 
-class Input
-{
+class Input {
 
-private:
-std::string label;
-
+protected:
+    char label;
 
 public:
-  // Constructeur
-Input(std::string label);
-// Le destructeur.
-
-
-
-void set_label(std::string  y);
-
-std::string get_label ();
-
-double value_access(double *  arr,int pos);
-
+    virtual char get_label() = 0;
+    virtual double operator[](int indice) = 0;
 };
-
 #endif

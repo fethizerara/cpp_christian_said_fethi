@@ -3,26 +3,20 @@
 
 #include <iostream>
 #include "Input.h"
-using namespace std;
+
 
 class Iris : public Input
 
 {
 
 private:
-int index;
-
+double description[4];
 
 public:
   // Constructeur
-Iris(int index);
-
-void set_index(int  index);
-
-int get_index ();
-
-
-std::string label_Lookup (int index);
+  Iris(int i);
+  double operator[](int indice);
+  char get_label ();
 
 };
 
