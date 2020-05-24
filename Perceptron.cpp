@@ -1,7 +1,6 @@
 #include <cstdlib>
 #include "Perceptron.h"
 
-
 Perceptron::Perceptron(int taille_input, Fonction_activation *f, char label) {
     poids = new double[taille_input];
     taille_poids = taille_input;
@@ -11,8 +10,7 @@ Perceptron::Perceptron(int taille_input, Fonction_activation *f, char label) {
     fonctionActivation = f;
     this->label = label;
     delta=0;
-}
-
+  
 double Perceptron::get_poids(int index) {
     return poids[index];
 }
@@ -36,7 +34,7 @@ double Perceptron::calcul_delta(Input *input) {
 double Perceptron::get_delta() {
     return delta;
 }
-
+  
 void Perceptron::backprop(Input* input, double pas) {
     for(int i=0; i<taille_poids; i++){
         if(i==0){
@@ -45,4 +43,5 @@ void Perceptron::backprop(Input* input, double pas) {
             poids[i]=poids[i] -pas*input->operator[](i)*calcul_delta(input);
         }
     }
-}
+
+
