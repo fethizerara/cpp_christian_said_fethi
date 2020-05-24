@@ -5,79 +5,66 @@
 #include <vector>
 #include <string>
 #include <sstream>
-#define PATH "C:/Users/Yagami/workspace/Project_cpp/resources_iris/iris"
-
-using namespace std;
-
+#include <cstdlib>
+#include <stdlib.h>
 
 
-Iris::Iris(int index) : Input(label_Lookup(index)){
 
-	this->index = index;
-
-}
-
-std::string toString(int i){
-   std::stringstream ss;
-   ss << i;
-   return ss.str();
-}
-
-std::string Iris::label_Lookup (int index){
-	std::string  label ;
-	std::string path = std::string(PATH) + toString(index);
-	std::ifstream myfile (path.c_str());
-	std::vector <std::string> data;
-	std::string input;
-
-	while (myfile >> input){
-
-	    std::stringstream ss(input);
-
-	    for (std::string i; ss >> i;) {
-	    		data.push_back(i);
-	        }
-
-	}
-
-	stringstream ss(data[0]);
-
-	while (ss.good()) {
-			std::string substr;
-	        getline(ss, substr, ',');
-	        data.push_back(substr);
-	    }
-
-	if (data[data.size()-1] == "Iris-setosa")
-		label = "label 0";
-	else if	(data[data.size()-1] == "Iris-virginica ")
-		label =  "label 1";
-	else if	(data[data.size()-1] == "Iris-versicolor")
-		label =  "label 2";
-	else
-	label = 'Error';
-
-	myfile.close();
-	return label;
-
-}
-
-void Iris::set_index(int  index){
-	this->index = index;
-
-}
-
-int Iris::get_index () {
-
-	return this->index;
-
-}
-
-int main()
+vector<string> split(const string& str, const string& delim)
 {
-Iris iris = Iris(3);
-std::cout << iris.get_label();
-return 0;
+    vector<string> tokens;
+    size_t prev = 0, pos = 0;
+    do
+    {
+        pos = str.find(delim, prev);
+        if (pos == string::npos) pos = str.length();
+        string token = str.substr(prev, pos-prev);
+        if (!token.empty()) tokens.push_back(token);
+        prev = pos + delim.length();
+    }
+    while (pos < str.length() && prev < str.length());
+    return tokens;
 }
+
+Iris::Iris(int index){
+    std::ostringstream ss;
+    ss << index;
+    std::string s(ss.str());
+   std::string path = "iris"+ s;
+   std::ifstream myfile (path.c_str());
+   std::vector <std::string> data;
+   std::string donnees;
+   getline(myfile,donnees);
+   data = split(donnees,",");
+   for(int i=0; i<5; i++){
+       description[i] = atof(data.at(i).c_str());
+   }
+ if (data.at(data.size()-1) == "Iris-setosa")
+     label = '0';
+ else if(data.at(data.size()-1)== "Iris-virginica")
+     label =  '1';
+ else if(data.at(data.size()-1) == "Iris-versicolor")
+     label =  '2';
+    myfile.close();
+}
+
+char Iris::get_label (){
+    return this->label;
+};
+
+double Iris::operator[] (int index){
+    return description[index];
+}
+
+int main(){
+    Iris in = Iris(1);
+    for (int i=0; i<4;i++){
+        cout<< in[i];
+        cout<< "\n";}
+
+}
+
+
+
 
 
