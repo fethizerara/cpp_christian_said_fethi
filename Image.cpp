@@ -23,8 +23,7 @@ Image::Image(int index){
     labelfile.seekg(8+index,ios::beg);
     pixelfile.read(pixel,784);
     pixelfile.close();
-    char c;
-    labelfile.read(&c,1);
+    labelfile.read(&label,1);
 
 }
 
@@ -37,8 +36,8 @@ double Image::operator[] (int index){
 }
 
 int main(){
-    Image my = Image(46163);
-
+    Image my = Image(1);
+    cout<<static_cast<unsigned>(my.get_label());
 }
 
 
