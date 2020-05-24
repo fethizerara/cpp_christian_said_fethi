@@ -5,9 +5,8 @@
 #include "Input.h"
 class Perceptron {
 private:
-    //c'est quoi le vecteur poids ?
-    double poids[12];
-    //fonction activation abstraite, c'est bizarre
+    double* poids;
+    int taille_poids;
     Fonction_activation* fonctionActivation;
     double delta;
     char label;
@@ -17,8 +16,7 @@ public:
     double forward(Input* input);
     double calcul_delta(Input *input);
     double get_delta();
-    void backprop(Input input, double pas);
-
+    void backprop(Input* input, double pas);
 };
 
 
