@@ -1,16 +1,24 @@
 #include <cstdlib>
 #include "Perceptron.h"
+#include "Iris.h"
+#include "Image.h"
 
 Perceptron::Perceptron(int taille_input, Fonction_activation *f, char label) {
-    poids = new double[taille_input];
-    taille_poids = taille_input;
-    for(int i =0; i<taille_input; i++){
-        poids[i]=(rand()/(double)RAND_MAX)*2-1;
+    if (taille_input == 4) {
+        poids = new double[151];
+        taille_poids = 151;
+    } else {
+        poids = new double[60001];
+        taille_poids = 60001;
+    }
+
+    for (int i = 0; i < taille_poids; i++) {
+        poids[i] = rand() % 2 - 1;
     }
     fonctionActivation = f;
     this->label = label;
-    delta=0;
-  
+    delta = 0;
+}
 double Perceptron::get_poids(int index) {
     return poids[index];
 }
@@ -18,9 +26,17 @@ double Perceptron::get_poids(int index) {
 double Perceptron::forward(Input *input) {
     double res=poids[0];
     for(int i=1; i<taille_poids; i++){
-        res+=poids[i]*input->operator[](i);
+        if(taille_poids==151){
+            Iris iris = Iris(i);
+            res+=poids[i]*iris.operator[](i);
+        }
+        else{
+            Image image = Image(i);
+            res+=poids[i]*image.operator[](i);
+        }
     }
-    return fonctionActivation->operator()(res);
+    res = fonctionActivation->operator()(res);
+    return res;
 }
 
 double Perceptron::calcul_delta(Input *input) {
@@ -34,14 +50,12 @@ double Perceptron::calcul_delta(Input *input) {
 double Perceptron::get_delta() {
     return delta;
 }
-  
+
 void Perceptron::backprop(Input* input, double pas) {
-    for(int i=0; i<taille_poids; i++){
-        if(i==0){
-            poids[i]=poids[i] - pas*calcul_delta(input);
-        } else{
-            poids[i]=poids[i] -pas*input->operator[](i)*calcul_delta(input);
-        }
+    poids[0] = poids[0] - pas * calcul_delta(input);
+    for (int i = 1; i < taille_poids; i++) {
+            poids[i] = poids[i] - pas * input->operator[](i) * calcul_delta(input);
     }
+}
 
 

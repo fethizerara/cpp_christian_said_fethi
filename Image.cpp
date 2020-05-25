@@ -8,7 +8,7 @@
 #include <sstream>
 #include <cstdlib>
 #include <stdlib.h>
-#include <c++/4.8.3/bitset>
+#include <bitset>
 
 
 Image::Image(int index){

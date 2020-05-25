@@ -1,6 +1,3 @@
-//
-// Created by Ravoavy Christian on 22/05/2020.
-//
 #include <cmath>
 #include "Tanh.h"
 

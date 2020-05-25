@@ -3,6 +3,7 @@
 
 #include "Fonction_activation.h"
 #include "Input.h"
+
 class Perceptron {
 private:
     double* poids;
