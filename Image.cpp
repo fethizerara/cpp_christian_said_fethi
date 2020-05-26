@@ -15,8 +15,8 @@ Image::Image(int index){
     std::ostringstream ss;
     ss << index;
     std::string s(ss.str());
-    std::string pixels = "training"+ s;
-    std::string labels = "train-labels.idx1-ubyte";
+    std::string pixels = "C:\\Users\\Ravoavy Christian\\Desktop\\New folder (2)\\cpp_christian_said_fethi\\Ressources\\MNIST_training\\training"+ s;
+    std::string labels = "C:\\Users\\Ravoavy Christian\\Desktop\\New folder (2)\\cpp_christian_said_fethi\\Ressources\\train-labels.idx1-ubyte";
     std::ifstream pixelfile (pixels.c_str(),std::ios::binary);
     std::ifstream labelfile (labels.c_str(), std::ios::binary);
     pixelfile.seekg(1078,ios::beg);
@@ -32,12 +32,7 @@ char Image::get_label (){
 }
 
 double Image::operator[] (int index){
-    return atoi(&pixel[index]);
-}
-
-int main(){
-    Image my = Image(1);
-    cout<<static_cast<unsigned>(my.get_label());
+    return (double)(pixel[index]);
 }
 
 

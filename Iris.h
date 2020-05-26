@@ -6,16 +6,13 @@
 
 
 class Iris : public Input
-
 {
-
 private:
 double description[4];
 
 public:
-  // Constructeur
-  Iris(int i);
-  double operator[](int indice);
+  Iris(int index);
+  double operator[](int index);
   char get_label ();
 
 };

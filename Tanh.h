@@ -1,12 +1,13 @@
 #ifndef TANH_H
 #define TANH_H
 
-#include "Fonction_activation.h"
+#include "Fonctionactivation.h"
 
-class Tanh : public Fonction_activation
+class Tanh : public Fonctionactivation
         {
-    double operator()(double arg);
-    double prim(double arg);
+        public:
+            double operator()(double arg);
+            double prim(double arg);
 };
 
 

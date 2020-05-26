@@ -10,6 +10,7 @@ class Image: public Input
 {
 private:
     char pixel[784];
+
 public:
     Image(int index);
     double operator[](int indice);

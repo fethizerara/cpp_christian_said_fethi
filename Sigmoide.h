@@ -2,9 +2,13 @@
 #define SIGMOIDE_H
 
 
-class Sigmoide {
-    double operator()(double arg);
-    double prim(double arg);
+#include "Fonctionactivation.h"
+
+class Sigmoide : public Fonctionactivation
+        {
+        public:
+                double operator()(double arg);
+                double prim(double arg);
 };
 
 

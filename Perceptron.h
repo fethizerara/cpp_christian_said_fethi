@@ -1,18 +1,18 @@
 #ifndef PERCEPTRON_H
 #define PERCEPTRON_H
 
-#include "Fonction_activation.h"
+#include "Fonctionactivation.h"
 #include "Input.h"
 
 class Perceptron {
 private:
     double* poids;
     int taille_poids;
-    Fonction_activation* fonctionActivation;
+    Fonctionactivation* fonctionActivation;
     double delta;
     char label;
 public:
-    Perceptron(int taille_input, Fonction_activation* f, char label);
+    Perceptron(int taille_input, Fonctionactivation* f, char label);
     double get_poids(int index);
     double forward(Input* input);
     double calcul_delta(Input *input);
