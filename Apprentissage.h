@@ -25,7 +25,7 @@ Apprentissage<input, nb_input, reseau_neurone>::Apprentissage(reseau_neurone* re
 template<class input, int nb_input, class reseau_neurone>
 void Apprentissage<input, nb_input, reseau_neurone>::apprendre_base(int K, double pas) {
     for(int k=0; k<K; k++){
-            input* input1 = new Iris(rand()%nb_input);
+            input* input1 = new input(rand()%nb_input);
             reseau->apprentissage(input1, pas);
     }
 }

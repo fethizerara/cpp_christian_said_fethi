@@ -8,13 +8,9 @@ NN1::NN1(int taille_input, int nbcategorie) {
     Tanh *fonctionActivation = new Tanh;
     this->nbcategorie = nbcategorie;
     this->taille_input = taille_input;
-    for(int i=0; i<nbcategorie; i++){
-        Perceptron p = Perceptron(taille_input,fonctionActivation,(char)i);
+    for (int i = 0; i < nbcategorie; i++) {
+        Perceptron p = Perceptron(taille_input, fonctionActivation,i);
         reseau.push_back(p);
-        for(int j=0; j< 5; j++){
-            cout<<p.get_poids(j)<<" ";
-        }
-        cout<<"\n";
     }
 }
 
@@ -24,7 +20,6 @@ char NN1::evaluation(Input *input) {
     for(int i=0; i< reseau.size(); i++){
         double calc = reseau.at(i).forward(input);
         if(maxi<calc){
-            cout<<"jerentre\n";
             maxi = calc;
             label = i;
         }
@@ -35,7 +30,5 @@ char NN1::evaluation(Input *input) {
 void NN1::apprentissage(Input *input, double pas) {
     for(int i=0; i<nbcategorie; i++){
         reseau.at(i).backprop(input,pas);
-//        cout<<reseau.at(i).get_delta()<<" ";
     }
-//    cout<<"\n";
 }

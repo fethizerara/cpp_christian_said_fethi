@@ -25,14 +25,14 @@ double Perceptron::forward(Input * input) {
     for(int i=1; i<taille_poids; i++){
         res+=poids[i]* (*input)[i-1];
     }
-    res = fonctionActivation->operator()(res);
+    res = (*fonctionActivation)(res);
     return res;
 }
 
 double Perceptron::calcul_delta(Input *input) {
     double w=poids[0];
     for(int i=1; i<taille_poids; i++){
-        w+=poids[i]*input->operator[](i-1);
+        w+=poids[i]*(*input)[(i-1)];
     }
     w = fonctionActivation->prim(w);
     double w2 = forward(input);
@@ -49,7 +49,7 @@ void Perceptron::backprop(Input* input, double pas) {
     calcul_delta(input);
     poids[0]= poids[0] - pas * this-> get_delta();
     for (int i = 1; i < taille_poids; i++) {
-        poids[i]= poids[i] - pas * input->operator[](i-1) * this-> get_delta();
+        poids[i]= poids[i] - pas * (*input)[i-1] * this-> get_delta();
     }
 }
 
