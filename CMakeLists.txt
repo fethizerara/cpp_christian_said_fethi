@@ -1,3 +1,4 @@
 project("cpp")
 
-add_executable(main main.cpp Fonctionactivation.h Image.h Image.cpp Input.h Iris.h Iris.cpp Perceptron.h Perceptron.cpp Sigmoide.h Sigmoide.cpp Tanh.h Tanh.cpp NN1.cpp NN1.h Apprentissage.h )
+add_executable(main main.cpp Fonctionactivation.h Image.h Image.cpp Input.h Iris.h Iris.cpp Perceptron.h Perceptron.cpp Sigmoide.h Sigmoide.cpp Tanh.h Tanh.cpp NN1.cpp NN1.h Apprentissage.h Perceptron_cache.cpp Perceptron_cache.h Input_intermediaire.h Input_intermediaire.cpp NN2.h NN2.cpp
+        )

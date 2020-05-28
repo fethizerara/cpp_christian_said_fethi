@@ -29,7 +29,7 @@ Iris::Iris(int index){
     std::ostringstream ss;
     ss << index;
     std::string s(ss.str());
-    std::string path = "C:\\Users\\Ravoavy Christian\\Desktop\\New folder (2)\\cpp_christian_said_fethi\\iris"+ s;
+    std::string path = "C:\\Users\\Ravoavy Christian\\Desktop\\New folder (2)\\cpp_christian_said_fethi\\Ressources\\iris_training\\iris"+ s;
     std::ifstream myfile(path.c_str());
     std::vector <std::string> data;
     std::string donnees;
@@ -41,9 +41,9 @@ Iris::Iris(int index){
  if (data.at(data.size()-1) == "Iris-setosa")
      label = 0;
  else if(data.at(data.size()-1)== "Iris-virginica")
-     label =  1;
+     label = 1;
  else if(data.at(data.size()-1) == "Iris-versicolor")
-     label =  2;
+     label = 2;
     myfile.close();
 }
 

@@ -1,61 +1,49 @@
 #ifndef APPRENTISSAGE_H
 #define APPRENTISSAGE_H
 
-
 #include <cstdlib>
 #include <ctime>
 #include "NN1.h"
+#include "NN2.h"
 #include "Iris.h"
 #include "Image.h"
 
-template <class input, int nb_input> class Apprentissage {
+template <class input, int nb_input, class reseau_neurone> class Apprentissage {
 private:
-    NN1 *reseau;
+    reseau_neurone* reseau;
 public:
-    Apprentissage(NN1* res);
+    Apprentissage(reseau_neurone* res);
     void apprendre_base(int K, double pas);
     int evaluer();
 };
 
-template<class input, int nb_input>
-Apprentissage<input, nb_input>::Apprentissage(NN1 *res) {
+template<class input, int nb_input, class reseau_neurone>
+Apprentissage<input, nb_input, reseau_neurone>::Apprentissage(reseau_neurone* res) {
     reseau = res;
 }
 
-template<class input, int nb_input>
-void Apprentissage<input, nb_input>::apprendre_base(int K, double pas) {
+template<class input, int nb_input, class reseau_neurone>
+void Apprentissage<input, nb_input, reseau_neurone>::apprendre_base(int K, double pas) {
     for(int k=0; k<K; k++){
-        int indi;
-        if(nb_input==150){
-            indi = rand()%150;
-            Iris* iris = new Iris(indi);
-            reseau->apprentissage(iris, pas);
-    }
-
-        else{
-            indi = rand()%60000;
-            Image *image = new Image(indi);
-            reseau->apprentissage(image, pas);
-        }
+            input* input1 = new Iris(rand()%nb_input);
+            reseau->apprentissage(input1, pas);
     }
 }
 
-template<class input, int nb_input> int Apprentissage<input, nb_input>::evaluer() {
-    int total;
-    for(int i=0; i<nb_input; i++){
-        Input *in;
-        if(nb_input==150){
-            in = new Iris(i);
-        }
-        else{
-            in = new Image(i);
-        }
+template<class input, int nb_input, class reseau_neurone> int Apprentissage<input, nb_input, reseau_neurone>::evaluer() {
+    int total=0;
+    for(int i=0; i<nb_input; i++) {
+        Input *in = new input(i);
         char vrai_label = in->get_label();
         char label_trouve = reseau->evaluation(in);
-        if ( vrai_label == label_trouve)
-                total++;
-
+        //cout<< static_cast<unsigned >(vrai_label)<<" "<< static_cast<unsigned>(label_trouve)<<"\n";
+        if (vrai_label == label_trouve) {
+        total++;
     }
+        //cout<<total<<"\n";
+    }
+
+    return total;
 }
 
 

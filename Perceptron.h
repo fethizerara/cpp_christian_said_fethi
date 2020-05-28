@@ -3,10 +3,10 @@
 
 #include "Fonctionactivation.h"
 #include "Input.h"
-
+#include <vector>
 class Perceptron {
-private:
-    double* poids;
+protected:
+    double *poids;
     int taille_poids;
     Fonctionactivation* fonctionActivation;
     double delta;
