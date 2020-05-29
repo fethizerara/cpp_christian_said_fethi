@@ -3,10 +3,11 @@
 
 #include <vector>
 #include "Perceptron.h"
+#include "Perceptron_cache.h"
 
 class NN2 {
 private:
-    vector<Perceptron> couche_cachee;
+    vector<Perceptron_cache> couche_cachee;
     vector<Perceptron *> couche_sortie;
 public:
     NN2(int taille_input, int nb_categorie, int nb_perceptron);

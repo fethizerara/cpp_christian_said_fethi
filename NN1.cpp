@@ -5,7 +5,7 @@
 #include <ctime>
 
 NN1::NN1(int taille_input, int nbcategorie) {
-    Tanh *fonctionActivation = new Tanh;
+    Sigmoide *fonctionActivation = new Sigmoide;
     this->nbcategorie = nbcategorie;
     this->taille_input = taille_input;
     for (int i = 0; i < nbcategorie; i++) {
@@ -29,6 +29,7 @@ char NN1::evaluation(Input *input) {
 
 void NN1::apprentissage(Input *input, double pas) {
     for(int i=0; i<nbcategorie; i++){
+        reseau.at(i).calcul_delta(input);
         reseau.at(i).backprop(input,pas);
     }
 }

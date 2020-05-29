@@ -45,7 +45,6 @@ double Perceptron::get_delta() {
 }
 
 void Perceptron::backprop(Input* input, double pas) {
-    calcul_delta(input);
     poids[0]= poids[0] - pas * this-> get_delta();
     for (int i = 1; i < taille_poids; i++) {
         poids[i]= poids[i] - pas * (*input)[i-1] * this-> get_delta();

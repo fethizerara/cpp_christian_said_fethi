@@ -4,6 +4,7 @@
 
 int main(){
     srand(time(NULL));
+
     NN1* reseau1 = new NN1(4,3);
     Apprentissage<Iris, 150, NN1> apprentissage1(reseau1);
     apprentissage1.apprendre_base(15000,0.1);

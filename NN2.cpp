@@ -5,9 +5,9 @@
 #include "Tanh.h"
 
 NN2::NN2(int taille_input, int nb_categorie, int nb_perceptron_cache) {
-    Tanh* fonctionActivation = new Tanh;
+    Sigmoide* fonctionActivation = new Sigmoide;
     for(int j=0; j<nb_categorie; j++){
-        Perceptron * p = new Perceptron(nb_categorie, fonctionActivation, j);
+        Perceptron * p = new Perceptron(nb_perceptron_cache, fonctionActivation, j);
         couche_sortie.push_back(p);
     }
     for(int i=0; i<nb_perceptron_cache; i++){
@@ -44,8 +44,13 @@ void NN2::apprentissage(Input *input, double pas) {
         (*(couche_sortie).at(j)).calcul_delta(im1);
     }
     for(int k=0; k<couche_cachee.size(); k++){
-        couche_cachee.at(k).calcul_delta(input);
+        (couche_cachee.at(k)).calcul_delta(input);
     }
+
+    for(int l = 0; l<couche_cachee.size(); l++){
+        (couche_cachee).at(l).backprop(input, pas);
+    }
+
     for(int m = 0; m<couche_sortie.size(); m++){
         (*(couche_sortie).at(m)).backprop(im1, pas);
     }

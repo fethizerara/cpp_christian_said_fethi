@@ -13,5 +13,4 @@ public:
     void backprop(Input* input, double pas);
 };
 
-
 #endif //PERCEPTRON_CACHE_H
