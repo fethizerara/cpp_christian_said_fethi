@@ -1,7 +1,3 @@
-//
-// Created by Ravoavy Christian on 27/05/2020.
-//
-
 #include "Perceptron_cache.h"
 
 Perceptron_cache::Perceptron_cache(int taille_input, Fonctionactivation * fonctionactivation, char label, vector<Perceptron *> sorties)
@@ -30,7 +26,7 @@ void Perceptron_cache::backprop(Input *input, double pas) {
     calcul_delta(input);
     poids[0] = poids[0] - pas * get_delta();
     for(int i=1; i<taille_poids; i++){
-        poids[i] = poids[i] - pas * (*input)[i-1];
+        poids[i] = poids[i] - pas * (*input)[i-1]*get_delta();
     }
 }
 
