@@ -24,7 +24,7 @@ Apprentissage<input, nb_input, reseau_neurone>::Apprentissage(reseau_neurone* re
 
 template<class input, int nb_input, class reseau_neurone>
 void Apprentissage<input, nb_input, reseau_neurone>::apprendre_base(int K, double pas) {
-    for(int k=0; k<K; k++){
+    for(int k=1; k<=K; k++){
             input* input1 = new input(rand()%nb_input);
             reseau->apprentissage(input1, pas);
     }
@@ -36,10 +36,10 @@ template<class input, int nb_input, class reseau_neurone> int Apprentissage<inpu
         Input *in = new input(i);
         char vrai_label = in->get_label();
         char label_trouve = reseau->evaluation(in);
-        //cout<< static_cast<unsigned >(vrai_label)<<" "<< static_cast<unsigned>(label_trouve)<<"\n";
+//        cout<< static_cast<unsigned >(vrai_label)<<" "<< static_cast<unsigned>(label_trouve)<<"\n";
         if (vrai_label == label_trouve) {
-        total++;
-    }
+            total++;
+        }
         //cout<<total<<"\n";
     }
 

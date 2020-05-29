@@ -8,6 +8,7 @@ using namespace std;
 class NN1 {
 private:
     vector<Perceptron> reseau;
+    vector<char> listelabel;
     int nbcategorie;
     int taille_input;
 public:

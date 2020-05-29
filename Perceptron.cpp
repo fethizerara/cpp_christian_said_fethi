@@ -26,15 +26,14 @@ double Perceptron::forward(Input * input) {
         res+=poids[i]* (*input)[i-1];
     }
     res = (*fonctionActivation)(res);
-    return res;
 }
 
 double Perceptron::calcul_delta(Input *input) {
     double w=poids[0];
     for(int i=1; i<taille_poids; i++){
-        w+=poids[i]*(*input)[(i-1)];
+        w+=poids[i]*(*input)[i-1];
     }
-    w = fonctionActivation->prim(w);
+    w = (*fonctionActivation).prim(w);
     double w2 = forward(input);
     double w3 = w * (w2 - (double) input->get_label());
     delta = w3;
