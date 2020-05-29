@@ -9,7 +9,7 @@ Perceptron::Perceptron(int taille_input, Fonctionactivation *f, char label) {
     poids = new double[taille_poids];
     double random = 0;
     for (int i = 0; i < taille_poids; i++) {
-        random = (rand()% 3 - 1);
+        random = (rand()% 2 - 1);
         poids[i] = random ;
     }
     fonctionActivation = f;

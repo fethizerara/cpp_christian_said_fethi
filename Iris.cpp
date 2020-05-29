@@ -8,7 +8,6 @@
 #include <cstdlib>
 
 
-
 vector<string> split(const string& str, const string& delim)
 {
     vector<string> tokens;
