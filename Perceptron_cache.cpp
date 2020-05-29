@@ -1,7 +1,3 @@
-//
-// Created by Ravoavy Christian on 27/05/2020.
-//
-
 #include "Perceptron_cache.h"
 
 Perceptron_cache::Perceptron_cache(int taille_input, Fonctionactivation * fonctionactivation, char label, vector<Perceptron *> sorties)
