@@ -13,7 +13,7 @@ double Perceptron_cache::calcul_delta(Input *input) {
     w = (*fonctionActivation).prim(w);
 
     double w2=0;
-    for(int j = 1; j<sortie.size(); j++){
+    for(int j = 0; j<sortie.size(); j++){
         w2+=(*sortie.at(j)).get_delta()*(*sortie.at(j)).get_poids(j);
     }
 
@@ -25,7 +25,7 @@ double Perceptron_cache::calcul_delta(Input *input) {
 void Perceptron_cache::backprop(Input *input, double pas) {
     poids[0] = poids[0] - pas * get_delta();
     for(int i=1; i<taille_poids; i++){
-        poids[i] = poids[i] - pas * (*input)[i-1]*get_delta();
+        poids[i] = poids[i] - pas * get_delta() * (*input)[i-1];
     }
 }
 
