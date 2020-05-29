@@ -7,12 +7,12 @@
 NN2::NN2(int taille_input, int nb_categorie, int nb_perceptron_cache) {
     Tanh* fonctionActivation = new Tanh;
     for(int j=0; j<nb_categorie; j++){
-        Perceptron * p = new Perceptron(taille_input, fonctionActivation, j);
+        Perceptron * p = new Perceptron(nb_categorie, fonctionActivation, j);
         couche_sortie.push_back(p);
     }
     for(int i=0; i<nb_perceptron_cache; i++){
-        Perceptron_cache p = Perceptron_cache(taille_input, fonctionActivation, i, couche_sortie);
-        couche_cachee.push_back(p);
+        Perceptron_cache p1 = Perceptron_cache(taille_input, fonctionActivation, i, couche_sortie);
+        couche_cachee.push_back(p1);
     }
 }
 

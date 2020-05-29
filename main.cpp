@@ -9,8 +9,7 @@ int main(){
     apprentissage1.apprendre_base(15000,0.1);
     cout << apprentissage1.evaluer()<<"\n";
 
-    srand(time(NULL));
-    NN2* reseau2 = new NN2(4,3, 6);
+    NN2* reseau2 = new NN2(4,3, 3);
     Apprentissage<Iris, 150, NN2> apprentissage2(reseau2);
     apprentissage2.apprendre_base(10000,0.01);
     cout << apprentissage2.evaluer()<<"\n";
