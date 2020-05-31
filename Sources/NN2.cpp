@@ -10,7 +10,6 @@
  * @param nb_perceptron_cache nombre de perceptrons cachees
  */
 NN2::NN2(int taille_input, int nb_categorie, int nb_perceptron_cache) {
-
     Sigmoide* fonctionActivation = new Sigmoide;
     for(int j=0; j<nb_categorie; j++){
         Perceptron * p = new Perceptron(nb_perceptron_cache, fonctionActivation, j);

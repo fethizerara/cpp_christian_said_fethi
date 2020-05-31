@@ -1,0 +1,27 @@
+Projet C++ : réseau de Neurones
+
+Membres du groupe :
+-AMRANI Said
+-RAVOAVY HARIMAMPIANINA Christian
+-ZERARA Fethi
+
+Prérequis du projet:
+IDE : Clion (dont le cmakelist est déjà fournis avec le code)
+Environnement : Windows
+
+-Le projet a été réalisé sous Clion pour windows, et donc les paths qui vont avec sont sous windows ( autrement dit les "/" deviennent des "\" etc... )
+-environnement utilisé : windows (modifier les paths des interfaces et des classes si vous passez sous linux
+-Décompresser le fichier zip
+
+Avant de lancer le test:
+-créer un dossier "Ressources" au même niveau que "Interfaces" et "Sources"
+-dans Ressources, créer un dossier iris_training qui contiendra tous les fichiers iris (les 150)
+-dans Ressources, créer également un dossier MNIST_training qui contiendra les fichiers images (les 60000)
+-dans Ressources copier le fichier train-labels.idx1-ubyte, le fichier qui contiendra les labels des images
+
+En résumé, l'arborescence de Resources esl la suivante:
+Ressources/iris_training/iris0 etc
+Ressources/MNIST_training/training0 etc
+Ressources/train-labels.idx1-ubyte
+
+Une fois que tout est mis en place, ouvrir le projet avec Clion et lancer le main avec le bouton play

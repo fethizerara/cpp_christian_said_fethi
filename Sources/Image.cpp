@@ -49,7 +49,8 @@ char Image::get_label (){
  * operator [] qui retourne la valeur d'une pixel correspondant a l'index en argument
  * */
 double Image::operator[] (int index){
-    return (pixel[index]);
+    //les inputs semblent retourner des valeurs negatives, donc nous avons choisi de retourner la valeur absolue
+    return abs((double)(pixel[index]));
 }
 
 
